@@ -21,7 +21,6 @@ const SCROLL_THRESHOLD = 10;
 const navLinks = [
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
-  { href: "/book", label: "Book" },
   { href: "/contact", label: "Contact" },
 ];
 

@@ -119,7 +119,7 @@ export function BookingModalProvider({ children }: { children: React.ReactNode }
       {children}
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="sm:max-w-2xl border-white/20 bg-background/90 p-0 shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:border-white/10 dark:bg-background/80 dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+        <DialogContent className="w-full max-w-[calc(100%-2rem)] max-h-[calc(100vh-3.5rem)] overflow-y-auto border-white/20 bg-background/90 p-0 shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:border-white/10 dark:bg-background/80 dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] sm:max-h-none sm:max-w-2xl">
           <div className="grid gap-0 sm:grid-cols-[1fr_360px]">
             <div className="border-b border-border p-6 sm:border-b-0 sm:border-r">
               <DialogHeader>

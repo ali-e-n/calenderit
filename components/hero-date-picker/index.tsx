@@ -152,7 +152,8 @@ export function HeroDatePicker() {
         <button
           type="button"
           onClick={handleBook}
-          className="min-h-12 shrink-0 bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 sm:px-8"
+          disabled={!serviceTitle || !dateTime}
+          className="min-h-12 shrink-0 bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-60 sm:px-8"
         >
           Book
         </button>

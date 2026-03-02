@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { format, parseISO } from "date-fns";
@@ -8,7 +9,7 @@ function displayOrDash(value: string | null) {
   return value && value.trim() ? value : "—";
 }
 
-export default function ConfirmationPage() {
+function ConfirmationContent() {
   const sp = useSearchParams();
 
   const service = displayOrDash(sp.get("service"));
@@ -89,6 +90,14 @@ export default function ConfirmationPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ConfirmationPage() {
+  return (
+    <Suspense fallback={null}>
+      <ConfirmationContent />
+    </Suspense>
   );
 }
 

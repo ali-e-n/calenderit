@@ -152,6 +152,31 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Location map */}
+      <section className="border-t border-border bg-muted/10 py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
+              Find Us
+            </h2>
+            <p className="mt-2 text-muted-foreground">
+              We are located in the heart of your city. Use the map below to
+              find the easiest way to reach us.
+            </p>
+          </div>
+          <div className="mt-8 overflow-hidden rounded-xl border border-border bg-background shadow-sm">
+            <iframe
+              title="Salon location"
+              src="https://www.google.com/maps?q=31.510706099129333,74.35783784562048&z=16&output=embed"
+              className="h-[320px] w-full md:h-[420px]"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Contact / CTA */}
       <section id="contact" className="border-t border-border py-16 md:py-24">
         <div className="container mx-auto px-4">
