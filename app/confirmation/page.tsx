@@ -76,13 +76,13 @@ function ConfirmationContent() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/"
-              className="inline-flex h-11 items-center justify-center rounded-xl bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+              className="inline-flex h-11 items-center justify-center rounded-xl border border-primary bg-primary px-6 text-sm font-medium text-primary-foreground shadow-[0_4px_20px_rgba(195,157,99,0.45)] transition-all hover:brightness-110"
             >
               Back to home
             </Link>
             <Link
               href="/"
-              className="inline-flex h-11 items-center justify-center rounded-xl border border-input bg-background px-6 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+              className="inline-flex h-11 items-center justify-center rounded-xl border border-white/20 bg-white/5 px-6 text-sm font-medium backdrop-blur-sm transition-all hover:bg-white/10 hover:border-white/20"
             >
               Make another booking
             </Link>

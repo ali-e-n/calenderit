@@ -53,7 +53,7 @@ export function AuthModal({ open, onOpenChange }: AuthModalProps) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="h-11 rounded-xl border-white/20 bg-white/50 transition-colors placeholder:text-muted-foreground/70 focus-visible:bg-white/70 dark:bg-white/5 dark:focus-visible:bg-white/10"
+                className="h-11 rounded-xl border-white/20 bg-white/5 transition-colors placeholder:text-muted-foreground/70 focus-visible:bg-white/10"
               />
             </div>
             <div className="space-y-2">
@@ -67,10 +67,10 @@ export function AuthModal({ open, onOpenChange }: AuthModalProps) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="h-11 rounded-xl border-white/20 bg-white/50 transition-colors placeholder:text-muted-foreground/70 focus-visible:bg-white/70 dark:bg-white/5 dark:focus-visible:bg-white/10"
+                className="h-11 rounded-xl border-white/20 bg-white/5 transition-colors placeholder:text-muted-foreground/70 focus-visible:bg-white/10"
               />
             </div>
-            <Button type="submit" className="h-11 w-full rounded-xl font-medium">
+            <Button type="submit" variant="glass" className="h-11 w-full font-medium">
               Sign in
             </Button>
             <p className="text-center text-sm text-muted-foreground">

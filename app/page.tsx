@@ -79,7 +79,7 @@ export default function Home() {
           <div className="mt-10 text-center">
             <Link
               href="/services"
-              className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-6 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+              className="inline-flex h-10 items-center justify-center rounded-md border border-primary bg-primary px-6 text-sm font-medium text-primary-foreground shadow-[0_4px_20px_rgba(195,157,99,0.45)] transition-all hover:brightness-110"
             >
               View all services
             </Link>
@@ -203,7 +203,7 @@ export default function Home() {
             </div>
             <Link
               href="/contact"
-              className="mt-8 inline-flex h-11 items-center justify-center rounded-md bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+              className="mt-8 inline-flex h-11 items-center justify-center rounded-md border border-primary bg-primary px-6 text-sm font-medium text-primary-foreground shadow-[0_4px_20px_rgba(195,157,99,0.45)] transition-all hover:brightness-110"
             >
               Contact us
             </Link>

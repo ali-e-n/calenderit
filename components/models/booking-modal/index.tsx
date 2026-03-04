@@ -3,7 +3,6 @@
 import { createContext, useContext, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Dialog,
@@ -119,7 +118,7 @@ export function BookingModalProvider({ children }: { children: React.ReactNode }
       {children}
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="w-full max-w-[calc(100%-2rem)] max-h-[calc(100vh-3.5rem)] overflow-y-auto border-white/20 bg-background/90 p-0 shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:border-white/10 dark:bg-background/80 dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] sm:max-h-none sm:max-w-2xl">
+        <DialogContent className="w-full max-w-[calc(100%-2rem)] max-h-[calc(100vh-3.5rem)] overflow-y-auto border-white/20 bg-background/80 p-0 shadow-[0_8px_32px_rgba(0,0,0,0.4)] sm:max-h-none sm:max-w-2xl">
           <div className="grid gap-0 sm:grid-cols-[1fr_360px]">
             <div className="border-b border-border p-6 sm:border-b-0 sm:border-r">
               <DialogHeader>
@@ -128,34 +127,29 @@ export function BookingModalProvider({ children }: { children: React.ReactNode }
                 </DialogTitle>
               </DialogHeader>
 
-              <div className="mt-4">
+              <div className="mt-4 space-y-4">
                 <Calendar
                   mode="single"
                   selected={dateTime}
                   onSelect={handleSelectDate}
                   disabled={{ before: new Date() }}
                   initialFocus
+                  className="!p-0 w-full"
                 />
-                <div className="mt-4 flex items-center gap-3">
-                  <div className="flex size-10 items-center justify-center rounded-xl border border-white/20 bg-white/40 dark:bg-white/5">
-                    <CalendarIcon className="size-5 text-muted-foreground" aria-hidden />
-                  </div>
-                  <div className="flex-1">
-                    <Label htmlFor="booking-time" className="text-sm font-medium">
-                      Time
-                    </Label>
-                    <input
-                      id="booking-time"
-                      type="time"
-                      value={timeValue}
-                      onChange={handleTimeChange}
-                      disabled={!dateTime}
-                      className={cn(
-                        "mt-2 h-11 w-full rounded-xl border border-white/20 bg-white/50 px-3 text-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
-                        "dark:bg-white/5 dark:focus-visible:bg-white/10"
-                      )}
-                    />
-                  </div>
+                <div className="space-y-2">
+                  <Label htmlFor="booking-time" className="text-sm font-medium">
+                    Time
+                  </Label>
+                  <input
+                    id="booking-time"
+                    type="time"
+                    value={timeValue}
+                    onChange={handleTimeChange}
+                    disabled={!dateTime}
+                    className={cn(
+                      "h-11 w-full rounded-xl border border-border bg-white/5 px-3 text-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 focus-visible:bg-white/10"
+                    )}
+                  />
                 </div>
               </div>
             </div>
@@ -171,7 +165,7 @@ export function BookingModalProvider({ children }: { children: React.ReactNode }
                     value={serviceTitle}
                     onChange={(e) => setServiceTitle(e.target.value)}
                     placeholder="e.g. Haircut"
-                    className="h-11 rounded-xl border-white/20 bg-white/50 placeholder:text-muted-foreground/70 focus-visible:bg-white/70 dark:bg-white/5 dark:focus-visible:bg-white/10"
+                    className="h-11 rounded-xl border-white/20 bg-white/5 placeholder:text-muted-foreground/70 focus-visible:bg-white/10"
                   />
                 </div>
 
@@ -185,7 +179,7 @@ export function BookingModalProvider({ children }: { children: React.ReactNode }
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Your name"
                     required
-                    className="h-11 rounded-xl border-white/20 bg-white/50 placeholder:text-muted-foreground/70 focus-visible:bg-white/70 dark:bg-white/5 dark:focus-visible:bg-white/10"
+                    className="h-11 rounded-xl border-white/20 bg-white/5 placeholder:text-muted-foreground/70 focus-visible:bg-white/10"
                   />
                 </div>
 
@@ -200,7 +194,7 @@ export function BookingModalProvider({ children }: { children: React.ReactNode }
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+1 234 567 890"
                     required
-                    className="h-11 rounded-xl border-white/20 bg-white/50 placeholder:text-muted-foreground/70 focus-visible:bg-white/70 dark:bg-white/5 dark:focus-visible:bg-white/10"
+                    className="h-11 rounded-xl border-white/20 bg-white/5 placeholder:text-muted-foreground/70 focus-visible:bg-white/10"
                   />
                 </div>
 
@@ -215,11 +209,11 @@ export function BookingModalProvider({ children }: { children: React.ReactNode }
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@example.com"
                     required
-                    className="h-11 rounded-xl border-white/20 bg-white/50 placeholder:text-muted-foreground/70 focus-visible:bg-white/70 dark:bg-white/5 dark:focus-visible:bg-white/10"
+                    className="h-11 rounded-xl border-white/20 bg-white/5 placeholder:text-muted-foreground/70 focus-visible:bg-white/10"
                   />
                 </div>
 
-                <Button type="submit" className="mt-2 h-11 w-full rounded-xl font-medium">
+                <Button type="submit" variant="glass" className="mt-2 h-11 w-full font-medium">
                   Confirm
                 </Button>
 

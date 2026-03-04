@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { AuthModal } from "@/components/models/auth-modal";
 import { Button } from "@/components/ui/button";
 import {
@@ -76,18 +75,17 @@ export function Header() {
             </Link>
           ))}
           <Button
+            variant="glass"
             size="sm"
             className="shrink-0 md:size-default md:px-5"
             onClick={() => setAuthOpen(true)}
           >
             Login
           </Button>
-          <ThemeToggle />
         </nav>
 
-        {/* Mobile: menu + theme + login */}
+        {/* Mobile: menu + login */}
         <div className="flex items-center gap-1 md:hidden">
-          <ThemeToggle />
           <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
             <SheetTrigger asChild>
               <Button
@@ -117,6 +115,7 @@ export function Header() {
               </nav>
               <div className="border-t border-border pt-4">
                 <Button
+                  variant="glass"
                   className="w-full"
                   size="lg"
                   onClick={() => {
