@@ -31,14 +31,15 @@ export function ServiceCard({
   const cardContent = (
     <>
       {/* Image + fav icon */}
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-t-lg bg-muted">
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-t-2xl bg-muted">
         <Image
           src={image}
           alt={imageAlt ?? title}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden />
         <button
           type="button"
           onClick={(e) => {
@@ -46,7 +47,7 @@ export function ServiceCard({
             e.stopPropagation();
             setIsFav((prev) => !prev);
           }}
-          className="absolute right-2 top-2 flex size-9 items-center justify-center rounded-full bg-background/80 text-muted-foreground backdrop-blur-sm transition-colors hover:bg-background hover:text-primary"
+          className="absolute right-3 top-3 flex size-9 items-center justify-center rounded-full border border-white/20 bg-white/20 text-muted-foreground backdrop-blur-md transition-all hover:bg-white/30 hover:text-primary"
           aria-label={isFav ? "Remove from favourites" : "Add to favourites"}
         >
           <Heart
@@ -56,8 +57,8 @@ export function ServiceCard({
         </button>
       </div>
 
-      {/* Title + book */}
-      <div className="flex flex-col gap-3 rounded-b-lg border border-t-0 border-border bg-background p-4">
+      {/* Title + book — glass panel */}
+      <div className="flex flex-col gap-3 rounded-b-2xl border border-t-0 border-white/20 bg-white/5 p-5 backdrop-blur-sm">
         <div>
           {href ? (
             <Link href={href} className="hover:underline">
@@ -71,6 +72,7 @@ export function ServiceCard({
           )}
         </div>
         <Button
+          variant="glass"
           size="sm"
           className="mt-auto w-full"
           onClick={() => openBooking({ serviceTitle: title })}
@@ -84,7 +86,7 @@ export function ServiceCard({
   return (
     <article
       className={cn(
-        "flex flex-col overflow-hidden rounded-lg border border-border bg-background transition-shadow hover:shadow-md",
+        "group flex flex-col overflow-hidden rounded-2xl border border-white/20 bg-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.15)] backdrop-blur-sm transition-all hover:border-white/20 hover:shadow-[0_8px_32px_rgba(0,0,0,0.2)]",
         className
       )}
     >

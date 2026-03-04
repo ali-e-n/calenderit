@@ -87,7 +87,7 @@ export default function ContactPage() {
                 </div>
                 <button
                   type="submit"
-                  className="mt-2 inline-flex h-11 w-full items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                  className="mt-2 inline-flex h-11 w-full items-center justify-center rounded-xl border border-primary bg-primary px-4 text-sm font-medium text-primary-foreground shadow-[0_4px_20px_rgba(195,157,99,0.45)] transition-all hover:brightness-110"
                 >
                   Send message
                 </button>

@@ -70,9 +70,13 @@ export function HeroCover({ images, children, className }: HeroCoverProps) {
             />
           </div>
         ))}
-        {/* Overlay for text readability */}
+        {/* Glassy overlay for text readability */}
         <div
-          className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"
+          className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60 backdrop-blur-0"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-white/[0.03] dark:bg-white/[0.02]"
           aria-hidden
         />
       </div>

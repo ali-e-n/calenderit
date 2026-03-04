@@ -87,16 +87,16 @@ export function HeroDatePicker() {
 
   return (
     <div className="mt-10 w-full max-w-3xl">
-      {/* Horizontal booking bar — single white container with border */}
-      <div className="flex flex-col overflow-hidden rounded-xl border-2 border-amber-400 bg-white shadow-lg sm:flex-row sm:items-stretch">
+      {/* Glassy booking bar */}
+      <div className="flex flex-col overflow-hidden rounded-2xl border border-white/20 bg-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] backdrop-blur-xl sm:flex-row sm:items-stretch">
         {/* Service */}
-        <div className="flex min-h-12 flex-1 items-center gap-3 border-b border-gray-200 px-4 py-3 sm:border-b-0 sm:border-r sm:border-gray-200 sm:py-0">
-          <Scissors className="size-5 shrink-0 text-gray-500" aria-hidden />
+        <div className="flex min-h-14 flex-1 items-center gap-4 border-b border-white/15 px-5 py-3 sm:border-b-0 sm:border-r sm:border-white/15 sm:px-6 sm:py-0">
+          <Scissors className="size-5 shrink-0 text-white/90" aria-hidden />
           <Select value={serviceTitle} onValueChange={setServiceTitle}>
-            <SelectTrigger className="h-auto w-full border-0 bg-transparent p-0 text-sm text-gray-900 shadow-none focus:ring-0 focus:ring-offset-0 [&_[data-slot=select-value]]:text-gray-900 [&_[data-slot=select-value]]:data-[placeholder]:text-gray-500">
+            <SelectTrigger className="h-auto w-full border-0 bg-transparent px-2 py-0 text-sm text-white shadow-none focus:ring-0 focus:ring-offset-0 [&_[data-slot=select-value]]:text-white [&_[data-slot=select-value]]:data-[placeholder]:text-white/70">
               <SelectValue placeholder="Choose service" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="rounded-xl border border-border bg-background/80 py-1 shadow-lg shadow-black/30 backdrop-blur-xl">
               {DUMMY_SERVICES.map(({ value, label, Icon }) => (
                 <SelectItem key={value} value={value}>
                   <span className="flex items-center gap-2">
@@ -114,17 +114,17 @@ export function HeroDatePicker() {
           <PopoverTrigger asChild>
             <button
               type="button"
-              className="flex min-h-12 flex-1 items-center gap-3 border-b border-gray-200 px-4 py-3 text-left transition-colors hover:bg-gray-50 sm:border-b-0 sm:border-r sm:border-gray-200 sm:py-0"
+              className="flex min-h-14 flex-1 items-center gap-3 border-b border-white/15 px-4 py-3 text-left transition-colors hover:bg-white/10 sm:border-b-0 sm:border-r sm:border-white/15 sm:py-0"
             >
-              <CalendarIcon className="size-5 shrink-0 text-gray-500" aria-hidden />
-              <span className={cn("text-sm", dateTime ? "text-gray-900 font-medium" : "text-gray-500")}>
+              <CalendarIcon className="size-5 shrink-0 text-white/90" aria-hidden />
+              <span className={cn("text-sm", dateTime ? "text-white font-medium" : "text-white/70")}>
                 {dateTime
                   ? format(dateTime, "EEE, MMM d 'at' h:mm a")
                   : "Pick date & time"}
               </span>
             </button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start" sideOffset={8}>
+          <PopoverContent className="w-auto border-white/10 bg-background/95 p-0 backdrop-blur-xl" align="start" sideOffset={8}>
             <Calendar
               mode="single"
               selected={dateTime}
@@ -153,7 +153,7 @@ export function HeroDatePicker() {
           type="button"
           onClick={handleBook}
           disabled={!serviceTitle || !dateTime}
-          className="min-h-12 shrink-0 bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-60 sm:px-8"
+          className="min-h-14 shrink-0 rounded-none border-l border-primary bg-primary px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_20px_rgba(195,157,99,0.45)] transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 sm:px-8"
         >
           Book
         </button>

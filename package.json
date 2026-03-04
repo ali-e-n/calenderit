@@ -1,6 +1,7 @@
 {
-  "name": "unknow",
+  "name": "calenderit",
   "version": "0.1.0",
+  "author": "Ali",
   "private": true,
   "scripts": {
     "dev": "next dev",
