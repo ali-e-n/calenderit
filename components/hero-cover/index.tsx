@@ -10,9 +10,10 @@ type HeroCoverProps = {
   images: string[];
   children: React.ReactNode;
   className?: string;
+  contentClassName?: string;
 };
 
-export function HeroCover({ images, children, className }: HeroCoverProps) {
+export function HeroCover({ images, children, className, contentClassName }: HeroCoverProps) {
   const [index, setIndex] = useState(0);
 
   const goTo = useCallback(
@@ -34,11 +35,13 @@ export function HeroCover({ images, children, className }: HeroCoverProps) {
     return (
       <section
         className={cn(
-          "relative flex h-screen min-h-[500px] flex-col items-center justify-center px-4",
+          "relative flex h-screen min-h-[600px] flex-col items-center justify-center px-4",
           className
         )}
       >
-        {children}
+        <div className={cn("relative z-10 flex flex-col", contentClassName)}>
+          {children}
+        </div>
       </section>
     );
   }
@@ -46,17 +49,17 @@ export function HeroCover({ images, children, className }: HeroCoverProps) {
   return (
     <section
       className={cn(
-        "relative flex h-screen min-h-[500px] flex-col items-center justify-center overflow-hidden px-4",
+        "relative flex h-screen min-h-[600px] flex-col items-center justify-center overflow-hidden",
         className
       )}
     >
-      {/* Background images — one visible at a time */}
+      {/* Background images */}
       <div className="absolute inset-0">
         {images.map((src, i) => (
           <div
             key={src}
             className={cn(
-              "absolute inset-0 transition-opacity duration-500",
+              "absolute inset-0 transition-opacity duration-700",
               i === index ? "opacity-100" : "opacity-0"
             )}
           >
@@ -70,19 +73,19 @@ export function HeroCover({ images, children, className }: HeroCoverProps) {
             />
           </div>
         ))}
-        {/* Glassy overlay for text readability */}
+        {/* Rich overlay — darker bottom for text, lighter top for image feel */}
         <div
-          className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60 backdrop-blur-0"
+          className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20"
           aria-hidden
         />
         <div
-          className="absolute inset-0 bg-white/[0.03] dark:bg-white/[0.02]"
+          className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20"
           aria-hidden
         />
       </div>
 
-      {/* Content on top */}
-      <div className="relative z-10 flex flex-col items-center text-center">
+      {/* Content */}
+      <div className={cn("relative z-10 flex w-full flex-col", contentClassName)}>
         {children}
       </div>
 
@@ -95,10 +98,8 @@ export function HeroCover({ images, children, className }: HeroCoverProps) {
             aria-label={`Go to slide ${i + 1}`}
             onClick={() => goTo(i)}
             className={cn(
-              "h-2 w-2 rounded-full transition-all duration-300",
-              i === index
-                ? "bg-white scale-125"
-                : "bg-white/50 hover:bg-white/80"
+              "h-[2px] rounded-full transition-all duration-500",
+              i === index ? "w-8 bg-primary" : "w-4 bg-white/30 hover:bg-white/60"
             )}
           />
         ))}

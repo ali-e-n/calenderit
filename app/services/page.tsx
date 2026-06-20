@@ -1,92 +1,118 @@
-import Link from "next/link";
 import { ServiceCard } from "@/components/service-card";
 
 const SERVICES = [
   {
     name: "Haircut & Styling",
     duration: "45 min",
+    price: "PKR 2,500",
     image: "/images/barbar1.jpg",
-    category: "Hair",
-    description: "Tailored cuts and styling for everyday looks or special occasions.",
+    description: "Tailored cuts and styling for everyday looks or special occasions. We work with your face shape, texture, and lifestyle.",
   },
   {
     name: "Hair Color",
     duration: "1–2 hrs",
+    price: "PKR 6,500",
     image: "/images/barbar2.jpg",
-    category: "Color",
-    description: "From subtle highlights to full color transformations.",
+    description: "From subtle balayage highlights to full transformation. Professional-grade color that protects your hair.",
   },
   {
     name: "Beard Trim & Grooming",
     duration: "30 min",
+    price: "PKR 800",
     image: "/images/barbar3.jpg",
-    category: "Beard",
-    description: "Clean lines, shaping, and maintenance for your beard.",
+    description: "Clean lines, precise shaping, and full maintenance for a polished, well-kept look.",
   },
   {
     name: "Makeup",
     duration: "1 hr",
+    price: "PKR 5,000",
     image: "/images/barbar3.jpg",
-    category: "Makeup",
-    description: "Camera-ready looks for weddings, shoots, and events.",
+    description: "Camera-ready looks for weddings, events, and shoots. Matched to your style and the occasion.",
   },
   {
-    name: "Facial Treatments",
+    name: "Facial Treatment",
     duration: "45–60 min",
+    price: "PKR 3,500",
     image: "/images/barbar2.jpg",
-    category: "Skin",
-    description: "Cleansing and glow-boosting facials tailored to your skin.",
+    description: "Cleansing and glow-boosting facials tailored to your skin type. Leave feeling refreshed.",
   },
   {
     name: "Hair Spa",
     duration: "1 hr",
+    price: "PKR 4,000",
     image: "/images/barbar1.jpg",
-    category: "Care",
-    description: "Deep nourishment and relaxation for healthier hair.",
+    description: "Deep conditioning and nourishment for healthier, shinier hair. Relaxing for your scalp too.",
   },
 ];
 
 export default function ServicesPage() {
   return (
     <div className="bg-background text-foreground">
-      <section className="border-b border-border bg-muted/20 pb-12 pt-24 md:pb-16 md:pt-28">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
-              Our Services
-            </h1>
-            <p className="mt-3 text-muted-foreground">
-              Explore everything we offer at Yaash Rajpoot. Choose a service to
-              see more details and book your visit.
-            </p>
+
+      {/* ── Page header ── */}
+      <section className="relative overflow-hidden border-b border-primary/10 pb-16 pt-32 md:pb-20 md:pt-40">
+        {/* Ambient glow */}
+        <div
+          className="pointer-events-none absolute -right-40 top-0 -z-10 h-[500px] w-[500px] rounded-full opacity-50"
+          style={{ background: "radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 70%)" }}
+        />
+        <div
+          className="pointer-events-none absolute -left-20 bottom-0 -z-10 h-[300px] w-[300px] rounded-full opacity-40"
+          style={{ background: "radial-gradient(circle, rgba(236,72,153,0.06) 0%, transparent 70%)" }}
+        />
+
+        <div className="container mx-auto px-5 md:px-12">
+          <div className="mb-5 flex items-center gap-3">
+            <div className="h-px w-6" style={{ background: "linear-gradient(90deg, #A855F7, #EC4899)" }} />
+            <span className="text-[10px] tracking-[0.4em] uppercase text-primary/80 font-medium">
+              Yaash Rajpoot
+            </span>
           </div>
+          <h1
+            className="font-display font-light leading-[0.86]"
+            style={{ fontSize: "clamp(3rem, 9vw, 7rem)" }}
+          >
+            Our <span className="italic" style={{
+              background: "linear-gradient(135deg, #A855F7 0%, #EC4899 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}>Services</span>
+          </h1>
+          <p className="mt-5 max-w-md text-sm leading-[1.85] text-muted-foreground">
+            Every service is tailored to you. Choose what you need and book your preferred time in seconds.
+          </p>
         </div>
+
+        {/* Gradient hairline bottom */}
+        <div
+          className="absolute bottom-0 left-0 h-[1px] w-2/3"
+          style={{ background: "linear-gradient(90deg, #A855F7, transparent)" }}
+        />
       </section>
 
-      <section className="py-14 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((service) => (
+      {/* ── Services grid ── */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-5 md:px-12">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {SERVICES.map((s) => (
               <ServiceCard
-                key={service.name}
-                image={service.image}
-                imageAlt={service.name}
-                title={service.name}
-                duration={service.duration}
+                key={s.name}
+                image={s.image}
+                imageAlt={s.name}
+                title={s.name}
+                duration={s.duration}
+                price={s.price}
+                description={s.description}
               />
             ))}
           </div>
-          <div className="mt-10 flex justify-center">
-            <Link
-              href="/"
-              className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-4 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
-            >
-              Back to home
-            </Link>
-          </div>
+          <p className="mt-10 text-center text-[10px] tracking-[0.2em] text-muted-foreground/35">
+            * Prices are indicative and may vary based on hair length and complexity.
+          </p>
         </div>
       </section>
+
     </div>
   );
 }
-
