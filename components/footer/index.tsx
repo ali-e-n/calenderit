@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "@/components/logo";
 
 export function Footer() {
   return (
@@ -8,13 +9,9 @@ export function Footer() {
     >
       <div className="mx-auto flex max-w-screen-2xl flex-col items-center justify-between gap-6 px-6 py-10 md:flex-row md:px-12">
 
-        {/* Logo text */}
-        <div
-          className="font-display text-[17px] tracking-[0.12em] uppercase text-foreground"
-          style={{ fontFamily: "var(--font-display)" }}
-        >
-          Yaash<span style={{ color: "#C9A84C" }}>.</span>Rajpoot
-        </div>
+        <Link href="/" style={{ textDecoration: "none" }}>
+          <Logo size="sm" />
+        </Link>
 
         {/* Copy */}
         <p className="text-[10px] tracking-[0.1em] text-muted-foreground order-last md:order-none">

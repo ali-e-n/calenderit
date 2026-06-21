@@ -22,6 +22,10 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Yaash Rajpoot | Hair and Makeup Saloon",
   description: "Book your next appointment at Yaash Rajpoot hair and makeup saloon",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

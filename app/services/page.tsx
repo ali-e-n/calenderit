@@ -5,46 +5,46 @@ const SLATE = "#8A8A8A";
 
 const SERVICES = [
   {
-    name: "Haircut & Styling",
+    name: "The Cut",
     duration: "45 min",
-    price: "PKR 2,500",
+    price: "PKR 1,200",
     image: "/images/barbar1.jpg",
-    description: "Tailored cuts and styling for everyday looks or special occasions. We work with your face shape, texture, and lifestyle.",
+    description: "Precision haircut tailored to your face shape and hair texture. Includes hot towel finish and a styling consultation.",
   },
   {
-    name: "Hair Color",
-    duration: "1–2 hrs",
-    price: "PKR 6,500",
+    name: "The Shave",
+    duration: "30 min",
+    price: "PKR 1,500",
     image: "/images/barbar2.jpg",
-    description: "From subtle balayage highlights to full transformation. Professional-grade color that protects your hair.",
+    description: "Traditional straight-razor shave with pre-shave oil, hot lather and a cold towel close. The real thing.",
   },
   {
-    name: "Beard Trim & Grooming",
+    name: "Beard Sculpt",
     duration: "30 min",
     price: "PKR 800",
     image: "/images/barbar3.jpg",
-    description: "Clean lines, precise shaping, and full maintenance for a polished, well-kept look.",
+    description: "Shape, define and condition your beard. Edges, neckline, cheek line — everything cleaned up and set.",
   },
   {
-    name: "Makeup",
-    duration: "1 hr",
-    price: "PKR 5,000",
-    image: "/images/barbar3.jpg",
-    description: "Camera-ready looks for weddings, events, and shoots. Matched to your style and the occasion.",
-  },
-  {
-    name: "Facial Treatment",
-    duration: "45–60 min",
-    price: "PKR 3,500",
-    image: "/images/barbar2.jpg",
-    description: "Cleansing and glow-boosting facials tailored to your skin type. Leave feeling refreshed.",
-  },
-  {
-    name: "Hair Spa",
-    duration: "1 hr",
-    price: "PKR 4,000",
+    name: "Scalp Ritual",
+    duration: "45 min",
+    price: "PKR 2,000",
     image: "/images/barbar1.jpg",
-    description: "Deep conditioning and nourishment for healthier, shinier hair. Relaxing for your scalp too.",
+    description: "Deep cleanse, exfoliation and tension-release scalp massage. Addresses buildup and promotes circulation.",
+  },
+  {
+    name: "Facial",
+    duration: "60 min",
+    price: "PKR 2,500",
+    image: "/images/barbar2.jpg",
+    description: "Men's skin treatment — cleanse, steam, extraction, mask and hydration. Leaves skin clear and calm.",
+  },
+  {
+    name: "The Works",
+    duration: "90 min",
+    price: "PKR 4,500",
+    image: "/images/barbar3.jpg",
+    description: "Cut + shave + facial. Our signature full-service experience. The best 90 minutes you'll spend this month.",
   },
 ];
 
@@ -58,7 +58,7 @@ export default function ServicesPage() {
           <div className="mb-4 flex items-center gap-3.5">
             <div className="h-px w-6" style={{ background: GOLD }} />
             <span className="text-[9px] tracking-[0.38em] uppercase" style={{ color: "rgba(201,168,76,0.65)" }}>
-              Yaash Rajpoot
+              Blade & Co
             </span>
           </div>
           <h1
@@ -72,7 +72,7 @@ export default function ServicesPage() {
             className="mt-6 max-w-[400px] text-[14px] leading-[1.85] font-light"
             style={{ color: SLATE }}
           >
-            Every service is tailored to you. Choose what you need and book your preferred time in seconds.
+            Six services, one standard — no shortcuts. Click any card to book directly.
           </p>
         </div>
 

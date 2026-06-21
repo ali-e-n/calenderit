@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Logo } from "@/components/logo";
 import { Menu, X } from "lucide-react";
 import { AuthModal } from "@/components/models/auth-modal";
 import { useBookingModal } from "@/components/models/booking-modal";
@@ -17,6 +18,7 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "/services", label: "Services" },
+  { href: "/team", label: "Team" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -47,20 +49,8 @@ export function Header() {
       <div className="mx-auto flex h-[64px] max-w-screen-2xl items-center justify-between px-6 md:px-12">
 
         {/* Logo — left */}
-        <Link
-          href="/"
-          className="shrink-0"
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "20px",
-            fontWeight: 400,
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-            color: "#F0EDE8",
-            textDecoration: "none",
-          }}
-        >
-          Yaash<span style={{ color: "#C9A84C" }}>.</span>Rajpoot
+        <Link href="/" className="shrink-0" style={{ textDecoration: "none" }}>
+          <Logo size="md" />
         </Link>
 
         {/* Nav — center, desktop */}
@@ -128,14 +118,6 @@ export function Header() {
               ))}
             </nav>
             <div className="space-y-2 border-t border-primary/12 pb-2 pt-5">
-              <button
-                type="button"
-                className="h-11 w-full text-[10px] font-medium tracking-[0.2em] uppercase transition-opacity hover:opacity-85"
-                style={{ background: "#C9A84C", color: "#0D0D0D" }}
-                onClick={() => { setMenuOpen(false); openBooking(); }}
-              >
-                Book Now
-              </button>
               <button
                 type="button"
                 className="h-11 w-full border border-primary/15 text-[10px] tracking-[0.2em] uppercase text-foreground/40 transition-colors hover:border-primary/30 hover:text-foreground/65"

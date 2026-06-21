@@ -21,7 +21,7 @@ const INFO = [
     icon: MapPin,
     label: "Address",
     value: "123 Salon Street, Lahore",
-    href: undefined,
+    href: "https://maps.app.goo.gl/FeFm4DzvjcbcebiV7",
   },
   {
     icon: Clock,
@@ -202,16 +202,38 @@ export default function ContactPage() {
       {/* ── Map ── */}
       <section className="border-t border-primary/12 pb-16 md:pb-24">
         <div className="mx-auto max-w-screen-xl px-6 md:px-12">
+
+          <div className="mb-5 flex items-end justify-between">
+            <div>
+              <div className="mb-2 flex items-center gap-3.5">
+                <div className="h-px w-6" style={{ background: GOLD }} />
+                <span className="text-[9px] tracking-[0.38em] uppercase" style={{ color: "rgba(201,168,76,0.65)" }}>Find Us</span>
+              </div>
+              <p className="text-[13px] font-light" style={{ color: SLATE }}>123 Salon Street, Lahore</p>
+            </div>
+            <a
+              href="https://maps.app.goo.gl/FeFm4DzvjcbcebiV7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase transition-opacity hover:opacity-75"
+              style={{ color: GOLD }}
+            >
+              Open in Maps →
+            </a>
+          </div>
+
           <div className="overflow-hidden border border-primary/15">
             <iframe
-              title="Salon location"
-              src="https://www.google.com/maps?q=31.510706099129333,74.35783784562048&z=16&output=embed"
-              className="h-[300px] w-full md:h-[420px]"
-              style={{ border: 0 }}
+              title="Yaash Rajpoot Saloon location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.5!2d74.35783784562048!3d31.510706099129333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x29e5f764919050c3%3A0xdbb86af6471c2d54!2sYaash%20Rajpoot%20Saloon%20%26%20S.P.A!5e0!3m2!1sen!2spk!4v1700000000000"
+              className="h-[340px] w-full md:h-[480px]"
+              style={{ border: 0, display: "block", filter: "invert(1) hue-rotate(180deg) saturate(0.55) brightness(0.82)" }}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
             />
           </div>
+
         </div>
       </section>
 
