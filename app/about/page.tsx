@@ -2,11 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { Clock, MapPin } from "lucide-react";
 
-function SectionLabel({ children }: { children: string }) {
+const GOLD = "#C9A84C";
+const SLATE = "#8A8A8A";
+const CHARCOAL = "#1A1A1A";
+
+function Eyebrow({ children }: { children: string }) {
   return (
-    <div className="mb-5 flex items-center gap-3">
-      <div className="h-px w-6" style={{ background: "linear-gradient(90deg, #A855F7, #EC4899)" }} />
-      <span className="text-[10px] tracking-[0.4em] uppercase text-primary/80 font-medium">
+    <div className="mb-4 flex items-center gap-3.5">
+      <div className="h-px w-6" style={{ background: GOLD }} />
+      <span className="text-[9px] tracking-[0.38em] uppercase" style={{ color: "rgba(201,168,76,0.65)" }}>
         {children}
       </span>
     </div>
@@ -17,99 +21,96 @@ export default function AboutPage() {
   return (
     <div className="bg-background text-foreground">
 
-      {/* ── Header ── */}
-      <section className="relative overflow-hidden border-b border-primary/10 pb-16 pt-32 md:pb-20 md:pt-40">
-        <div
-          className="pointer-events-none absolute -right-40 top-0 -z-10 h-[500px] w-[500px] rounded-full opacity-50"
-          style={{ background: "radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 70%)" }}
-        />
-        <div className="container mx-auto px-5 md:px-12">
-          <SectionLabel>About</SectionLabel>
+      {/* ── Page header ── */}
+      <section
+        className="relative overflow-hidden border-b border-primary/12 pb-16 pt-36 md:pb-20 md:pt-44"
+      >
+        <div className="mx-auto max-w-screen-xl px-6 md:px-12">
+          <Eyebrow>About</Eyebrow>
           <h1
-            className="font-display font-light leading-[0.86]"
-            style={{ fontSize: "clamp(3rem, 9vw, 7rem)" }}
+            className="font-display font-light leading-[0.9]"
+            style={{ fontSize: "clamp(3rem, 9vw, 7rem)", fontFamily: "var(--font-display)" }}
           >
             Our{" "}
-            <span
-              className="italic"
-              style={{
-                background: "linear-gradient(135deg, #A855F7 0%, #EC4899 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              Story
-            </span>
+            <em style={{ fontStyle: "italic", color: GOLD }}>Story</em>
           </h1>
-          <p className="mt-5 max-w-md text-sm leading-[1.85] text-muted-foreground">
+          <p
+            className="mt-6 max-w-[400px] text-[14px] leading-[1.85] font-light"
+            style={{ color: SLATE }}
+          >
             Yaash Rajpoot is a hair and makeup salon focused on easy online booking, warm hospitality, and looks that feel like you.
           </p>
         </div>
+
+        {/* Gold bottom hairline */}
         <div
-          className="absolute bottom-0 left-0 h-[1px] w-2/3"
-          style={{ background: "linear-gradient(90deg, #A855F7, transparent)" }}
+          className="absolute bottom-0 left-0 h-px w-2/3"
+          style={{ background: `linear-gradient(90deg, ${GOLD}, transparent)` }}
         />
       </section>
 
       {/* ── Story split ── */}
-      <section className="py-24 md:py-36">
-        <div className="container mx-auto px-5 md:px-12">
-          <div className="grid items-center gap-14 md:grid-cols-2 md:gap-24">
-            <div className="relative">
-              <div
-                className="relative aspect-[4/5] overflow-hidden rounded-3xl"
-                style={{ boxShadow: "0 0 0 1px rgba(168,85,247,0.2), 0 16px 70px rgba(168,85,247,0.15)" }}
-              >
-                <Image
-                  src="/images/barbar1.jpg"
-                  alt="Inside Yaash Rajpoot salon"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/55 via-transparent to-transparent" />
-              </div>
+      <section className="mx-auto max-w-screen-xl px-6 py-24 md:px-12 md:py-36">
+        <div className="grid items-center gap-16 md:grid-cols-2 md:gap-24">
+
+          {/* Image */}
+          <div className="relative">
+            <div className="relative aspect-[4/5] overflow-hidden border border-primary/20">
+              <Image
+                src="/images/barbar1.jpg"
+                alt="Inside Yaash Rajpoot salon"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/55 via-transparent to-transparent" />
             </div>
-            <div>
-              <SectionLabel>Who We Are</SectionLabel>
-              <h2
-                className="font-display font-light leading-[0.88]"
-                style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
-              >
-                Where precision<br />meets <span className="italic text-gradient">care</span>
-              </h2>
-              <div className="mt-7 space-y-4 text-sm leading-[1.9] text-muted-foreground">
-                <p>
-                  We blend skill, creativity, and genuine care to make every visit feel special. Whether you are preparing for a big event or just need a regular refresh, our team takes the time to understand your style.
-                </p>
-                <p>
-                  We pay attention to face shape, hair texture, and your lifestyle — so every cut, color, and style suits you beyond the salon chair.
-                </p>
-              </div>
+          </div>
+
+          {/* Text */}
+          <div>
+            <Eyebrow>Who We Are</Eyebrow>
+            <h2
+              className="font-display font-light leading-[0.9]"
+              style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontFamily: "var(--font-display)" }}
+            >
+              Where precision<br />meets{" "}
+              <em style={{ fontStyle: "italic", color: GOLD }}>care</em>
+            </h2>
+            <div className="mt-6 mb-6 h-px w-12" style={{ background: GOLD }} />
+            <div
+              className="space-y-4 text-[14px] leading-[1.9] font-light"
+              style={{ color: SLATE }}
+            >
+              <p>
+                We blend skill, creativity, and genuine care to make every visit feel special. Whether you are preparing for a big event or just need a regular refresh, our team takes the time to understand your style.
+              </p>
+              <p>
+                We pay attention to face shape, hair texture, and your lifestyle — so every cut, color, and style suits you beyond the salon chair.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── Values ── */}
-      <section className="border-t border-primary/10 py-24 md:py-32">
-        <div className="container mx-auto px-5 md:px-12">
-          <SectionLabel>Our Values</SectionLabel>
+      <section
+        className="border-t border-primary/12 py-24 md:py-32"
+        style={{ background: CHARCOAL }}
+      >
+        <div className="mx-auto max-w-screen-xl px-6 md:px-12">
+          <Eyebrow>Our Values</Eyebrow>
           <h2
-            className="font-display font-light mb-16 leading-[0.88]"
-            style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
+            className="font-display font-light mb-16 leading-[0.9]"
+            style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontFamily: "var(--font-display)" }}
           >
             What We{" "}
-            <span className="italic" style={{
-              background: "linear-gradient(135deg, #A855F7 0%, #EC4899 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}>
-              Stand For
-            </span>
+            <em style={{ fontStyle: "italic", color: GOLD }}>Stand For</em>
           </h2>
-          <div className="grid gap-0 md:grid-cols-3">
+
+          <div
+            className="grid md:grid-cols-3"
+            style={{ gap: "1px", background: "rgba(201,168,76,0.20)" }}
+          >
             {[
               {
                 n: "01",
@@ -126,25 +127,30 @@ export default function AboutPage() {
                 title: "A Comfortable Space",
                 body: "Friendly, judgment-free, and focused on making you feel relaxed and taken care of.",
               },
-            ].map(({ n, title, body }, i) => (
-              <div
-                key={n}
-                className={[
-                  "group py-10 transition-all duration-500",
-                  i < 2
-                    ? "border-b border-primary/10 md:border-b-0 md:border-r md:border-primary/10 md:pr-12"
-                    : "",
-                  i > 0 ? "md:pl-12" : "",
-                ].join(" ")}
-              >
+            ].map(({ n, title, body }) => (
+              <div key={n} className="group px-8 py-10" style={{ background: CHARCOAL }}>
                 <p
-                  className="font-display font-light text-gradient opacity-20 transition-opacity duration-500 group-hover:opacity-50"
-                  style={{ fontSize: "clamp(3rem, 5vw, 4.5rem)" }}
+                  className="font-display font-light leading-none transition-colors duration-300"
+                  style={{
+                    fontSize: "clamp(3rem, 5vw, 4.5rem)",
+                    fontFamily: "var(--font-display)",
+                    color: "rgba(201,168,76,0.14)",
+                  }}
                 >
                   {n}
                 </p>
-                <h3 className="mt-5 text-[15px] font-medium tracking-wide">{title}</h3>
-                <p className="mt-2.5 text-sm leading-[1.85] text-muted-foreground">{body}</p>
+                <h3
+                  className="mt-5 text-[15px] font-medium tracking-wide"
+                  style={{ color: "#F0EDE8" }}
+                >
+                  {title}
+                </h3>
+                <p
+                  className="mt-2.5 text-[13px] leading-[1.85] font-light"
+                  style={{ color: SLATE }}
+                >
+                  {body}
+                </p>
               </div>
             ))}
           </div>
@@ -152,18 +158,23 @@ export default function AboutPage() {
       </section>
 
       {/* ── Philosophy + info ── */}
-      <section className="border-t border-primary/10 py-24 md:py-32">
-        <div className="container mx-auto px-5 md:px-12">
+      <section className="border-t border-primary/12 py-24 md:py-32">
+        <div className="mx-auto max-w-screen-xl px-6 md:px-12">
           <div className="grid items-start gap-14 md:grid-cols-2 md:gap-20">
             <div>
-              <SectionLabel>Philosophy</SectionLabel>
+              <Eyebrow>Philosophy</Eyebrow>
               <h2
-                className="font-display font-light leading-[0.88] mb-7"
-                style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
+                className="font-display font-light leading-[0.9] mb-6"
+                style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontFamily: "var(--font-display)" }}
               >
-                Beauty Should<br />Feel <span className="italic text-gradient">Effortless</span>
+                Beauty Should<br />Feel{" "}
+                <em style={{ fontStyle: "italic", color: GOLD }}>Effortless</em>
               </h2>
-              <div className="space-y-4 text-sm leading-[1.9] text-muted-foreground">
+              <div className="mb-6 h-px w-12" style={{ background: GOLD }} />
+              <div
+                className="space-y-4 text-[14px] leading-[1.9] font-light"
+                style={{ color: SLATE }}
+              >
                 <p>
                   Great hair and makeup should feel effortless for you. That is why we focus on clear communication, honest recommendations, and maintainable looks that still feel elevated.
                 </p>
@@ -173,7 +184,8 @@ export default function AboutPage() {
               </div>
               <Link
                 href="/services"
-                className="mt-9 inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-primary transition-all hover:tracking-[0.28em]"
+                className="mt-9 inline-flex items-center gap-2 text-[10px] tracking-[0.22em] uppercase transition-colors"
+                style={{ color: GOLD }}
               >
                 See our services →
               </Link>
@@ -181,36 +193,47 @@ export default function AboutPage() {
 
             {/* Info card */}
             <div
-              className="rounded-2xl border border-primary/15 bg-card/60 p-7 backdrop-blur-sm"
-              style={{ boxShadow: "0 4px 30px rgba(168,85,247,0.08)" }}
+              className="border border-primary/15 p-7"
+              style={{ background: CHARCOAL }}
             >
-              <p className="mb-7 text-[9px] tracking-[0.35em] uppercase text-muted-foreground/50">Visit Us</p>
+              <p
+                className="mb-7 text-[9px] tracking-[0.35em] uppercase"
+                style={{ color: "rgba(201,168,76,0.45)" }}
+              >
+                Visit Us
+              </p>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="flex size-9 shrink-0 items-center justify-center rounded-full border border-primary/20 bg-primary/10">
-                    <MapPin className="size-4 text-primary" />
+                  <div
+                    className="flex size-9 shrink-0 items-center justify-center border border-primary/25"
+                    style={{ color: GOLD }}
+                  >
+                    <MapPin className="size-4" />
                   </div>
                   <div>
-                    <p className="text-[11px] tracking-[0.15em] uppercase text-muted-foreground/55 mb-1">Address</p>
-                    <p className="text-sm text-foreground/80">123 Salon Street, Lahore</p>
+                    <p className="text-[10px] tracking-[0.15em] uppercase mb-1" style={{ color: "rgba(201,168,76,0.45)" }}>Address</p>
+                    <p className="text-[13px] font-light" style={{ color: "#F0EDE8" }}>123 Salon Street, Lahore</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="flex size-9 shrink-0 items-center justify-center rounded-full border border-primary/20 bg-primary/10">
-                    <Clock className="size-4 text-primary" />
+                  <div
+                    className="flex size-9 shrink-0 items-center justify-center border border-primary/25"
+                    style={{ color: GOLD }}
+                  >
+                    <Clock className="size-4" />
                   </div>
                   <div>
-                    <p className="text-[11px] tracking-[0.15em] uppercase text-muted-foreground/55 mb-1">Hours</p>
-                    <p className="text-sm text-foreground/80">Mon–Sat: 10:00 – 21:00</p>
-                    <p className="text-sm text-foreground/80">Sunday: 11:00 – 19:00</p>
+                    <p className="text-[10px] tracking-[0.15em] uppercase mb-1" style={{ color: "rgba(201,168,76,0.45)" }}>Hours</p>
+                    <p className="text-[13px] font-light" style={{ color: "#F0EDE8" }}>Mon–Sat: 10:00 – 21:00</p>
+                    <p className="text-[13px] font-light" style={{ color: "#F0EDE8" }}>Sunday: 11:00 – 19:00</p>
                   </div>
                 </div>
               </div>
-              <div className="mt-8 border-t border-primary/10 pt-6">
+              <div className="mt-8 border-t border-primary/12 pt-6">
                 <Link
                   href="/contact"
-                  className="flex h-11 w-full items-center justify-center rounded-xl text-[10px] font-medium tracking-[0.2em] uppercase text-white shadow-[0_4px_20px_rgba(168,85,247,0.35)] transition-all hover:shadow-[0_4px_30px_rgba(168,85,247,0.55)] hover:-translate-y-0.5"
-                  style={{ background: "linear-gradient(135deg, #A855F7 0%, #EC4899 100%)" }}
+                  className="flex h-11 w-full items-center justify-center text-[10px] font-medium tracking-[0.2em] uppercase transition-opacity hover:opacity-85"
+                  style={{ background: GOLD, color: "#0D0D0D" }}
                 >
                   Get in Touch
                 </Link>

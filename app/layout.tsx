@@ -1,25 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
+import { Inter, Cormorant_Garamond } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Header } from "@/components/header";
 import { BookingModalProvider } from "@/components/models/booking-modal";
-import { Footer } from "@/components/footer";
+import { LayoutShell } from "@/components/layout-shell";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  display: "swap",
 });
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
   display: "swap",
 });
 
@@ -36,7 +32,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} antialiased`}
+        className={`${inter.variable} ${cormorant.variable} antialiased`}
+        style={{ fontFamily: "var(--font-inter), sans-serif" }}
       >
         <ThemeProvider
           attribute="class"
@@ -46,11 +43,7 @@ export default function RootLayout({
           forcedTheme="dark"
         >
           <BookingModalProvider>
-            <div className="flex min-h-screen flex-col">
-              <Header />
-              <main className="flex-1">{children}</main>
-              <Footer />
-            </div>
+            <LayoutShell>{children}</LayoutShell>
           </BookingModalProvider>
         </ThemeProvider>
       </body>

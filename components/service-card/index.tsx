@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-import { ArrowUpRight, Heart, Scissors, Palette, Smile, Sparkles, Droplets } from "lucide-react";
+import { ArrowUpRight, Clock } from "lucide-react";
 import { useBookingModal } from "@/components/models/booking-modal";
 import { cn } from "@/lib/utils";
 
@@ -13,22 +12,8 @@ export type ServiceCardProps = {
   duration?: string;
   price?: string;
   description?: string;
-  href?: string;
   className?: string;
 };
-
-const iconMap: Array<{ keys: string[]; Icon: React.ComponentType<{ className?: string }> }> = [
-  { keys: ["color"], Icon: Palette },
-  { keys: ["facial"], Icon: Smile },
-  { keys: ["makeup"], Icon: Sparkles },
-  { keys: ["spa"], Icon: Droplets },
-  { keys: ["haircut", "hair", "beard", "trim", "styling"], Icon: Scissors },
-];
-
-function getIcon(title: string) {
-  const lower = title.toLowerCase();
-  return iconMap.find(({ keys }) => keys.some((k) => lower.includes(k)))?.Icon ?? Scissors;
-}
 
 export function ServiceCard({
   image,
@@ -39,25 +24,25 @@ export function ServiceCard({
   description,
   className,
 }: ServiceCardProps) {
-  const [isFav, setIsFav] = useState(false);
   const { openBooking } = useBookingModal();
-  const ServiceIcon = getIcon(title);
 
   return (
     <article
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-2xl border border-primary/12 bg-card cursor-pointer transition-all duration-500 hover:border-primary/35 hover:shadow-[0_0_0_1px_rgba(168,85,247,0.20),0_12px_60px_rgba(168,85,247,0.15)]",
+        "group relative flex flex-col overflow-hidden border border-primary/15 bg-card cursor-pointer",
+        "transition-all duration-400 hover:border-primary/45",
         className
       )}
+      style={{ background: "#1A1A1A" }}
       onClick={() => openBooking({ serviceTitle: title })}
     >
-      {/* Gradient accent bar — top */}
+      {/* Gold top accent bar on hover */}
       <div
         className="absolute left-0 top-0 z-10 h-[2px] w-0 transition-all duration-500 group-hover:w-full"
-        style={{ background: "linear-gradient(90deg, #A855F7, #EC4899)" }}
+        style={{ background: "#C9A84C" }}
       />
 
-      {/* Image — landscape */}
+      {/* Image */}
       <div className="relative aspect-video w-full overflow-hidden">
         <Image
           src={image}
@@ -66,28 +51,29 @@ export function ServiceCard({
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/25 to-transparent" />
 
-        {/* Fav button */}
-        <button
-          type="button"
-          onClick={(e) => { e.stopPropagation(); setIsFav((v) => !v); }}
-          className="absolute right-3 top-3 flex size-8 items-center justify-center rounded-full border border-white/15 bg-black/40 backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-black/60"
-          aria-label={isFav ? "Remove from favourites" : "Add to favourites"}
-        >
-          <Heart
-            className={cn(
-              "size-3.5 transition-all duration-300",
-              isFav ? "fill-pink-500 stroke-pink-500" : "stroke-white/60"
-            )}
-          />
-        </button>
-
-        {/* Duration pill — over image bottom */}
+        {/* Duration */}
         {duration && (
           <div className="absolute bottom-3 left-3">
-            <span className="inline-flex items-center rounded-full border border-primary/25 bg-black/50 px-2.5 py-0.5 text-[9px] tracking-[0.2em] uppercase text-primary backdrop-blur-sm">
+            <span
+              className="inline-flex items-center gap-1 px-2.5 py-0.5 text-[9px] tracking-[0.18em] uppercase border border-primary/30"
+              style={{ background: "rgba(0,0,0,0.60)", color: "#C9A84C" }}
+            >
+              <Clock className="size-2.5" />
               {duration}
+            </span>
+          </div>
+        )}
+
+        {/* Price — top right */}
+        {price && (
+          <div className="absolute right-3 top-3">
+            <span
+              className="border border-white/10 px-2.5 py-0.5 font-mono text-[9px]"
+              style={{ background: "rgba(0,0,0,0.55)", color: "rgba(240,237,232,0.55)" }}
+            >
+              {price}
             </span>
           </div>
         )}
@@ -95,39 +81,38 @@ export function ServiceCard({
 
       {/* Content */}
       <div className="flex flex-1 flex-col p-5">
-        {/* Icon + price row */}
-        <div className="mb-3 flex items-center justify-between">
-          <div className="flex size-8 items-center justify-center rounded-lg border border-primary/20 bg-primary/10">
-            <ServiceIcon className="size-3.5 text-primary" />
-          </div>
-          {price && (
-            <span className="font-mono text-sm font-semibold text-foreground/75">{price}</span>
-          )}
-        </div>
-
-        {/* Title */}
-        <h3 className="font-display text-[1.45rem] font-light leading-tight text-foreground">
+        <h3
+          className="font-display text-[1.4rem] font-light leading-tight text-foreground"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
           {title}
         </h3>
 
-        {/* Description */}
         {description && (
-          <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground line-clamp-2">
+          <p
+            className="mt-2 flex-1 text-[13px] leading-[1.75] font-light line-clamp-2"
+            style={{ color: "#8A8A8A" }}
+          >
             {description}
           </p>
         )}
 
-        {/* CTA */}
-        <div className="mt-4 flex items-center justify-between border-t border-primary/10 pt-4">
+        <div
+          className="mt-4 flex items-center justify-between border-t border-primary/10 pt-4"
+        >
           <button
             type="button"
             onClick={(e) => { e.stopPropagation(); openBooking({ serviceTitle: title }); }}
-            className="flex items-center gap-1.5 text-[10px] tracking-[0.18em] uppercase text-primary transition-all duration-300 hover:gap-3"
+            className="flex items-center gap-1.5 text-[10px] tracking-[0.18em] uppercase transition-all duration-300 hover:gap-2.5"
+            style={{ color: "#C9A84C" }}
           >
             Book Now
-            <ArrowUpRight className="size-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight className="size-3" />
           </button>
-          <div className="h-[1px] w-8 bg-gradient-to-r from-primary/40 to-transparent" />
+          <div
+            className="h-px w-8 opacity-40 transition-all duration-300 group-hover:w-12 group-hover:opacity-70"
+            style={{ background: "#C9A84C" }}
+          />
         </div>
       </div>
     </article>

@@ -118,9 +118,9 @@ export function BookingModalProvider({ children }: { children: React.ReactNode }
       {children}
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="w-full max-w-[calc(100%-2rem)] max-h-[calc(100vh-3.5rem)] overflow-y-auto border-white/20 bg-background/80 p-0 shadow-[0_8px_32px_rgba(0,0,0,0.4)] sm:max-h-none sm:max-w-2xl">
+        <DialogContent className="w-full max-w-[calc(100%-2rem)] max-h-[calc(100vh-3.5rem)] overflow-y-auto p-0 shadow-[0_16px_64px_rgba(0,0,0,0.6)] sm:max-h-none sm:max-w-2xl" style={{ background: "#1A1A1A", border: "1px solid rgba(201,168,76,0.22)" }}>
           <div className="grid gap-0 sm:grid-cols-[1fr_360px]">
-            <div className="border-b border-border p-6 sm:border-b-0 sm:border-r">
+            <div className="border-b border-primary/15 p-6 sm:border-b-0 sm:border-r sm:border-primary/15">
               <DialogHeader>
                 <DialogTitle className="text-xl font-semibold tracking-tight">
                   Book an appointment
@@ -147,7 +147,7 @@ export function BookingModalProvider({ children }: { children: React.ReactNode }
                     onChange={handleTimeChange}
                     disabled={!dateTime}
                     className={cn(
-                      "h-11 w-full rounded-xl border border-border bg-white/5 px-3 text-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 focus-visible:bg-white/10"
+                      "h-11 w-full border border-primary/15 bg-background px-3 text-sm outline-none transition-colors focus:border-primary/40 disabled:pointer-events-none disabled:opacity-50"
                     )}
                   />
                 </div>
